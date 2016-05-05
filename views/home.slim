@@ -16,33 +16,30 @@ section#page-top.container.home
       br
       h2 Key Sharer
       p A simple and secure way to share your credentials.
-    .col-lg-6.text-right.wow.fadeInRight
-      img.img-responsive.pull-right alt="dashboard" src="img/dashboard.png" /
+    .col-lg-6.wow.fadeInRight.border
+      h2 Create your account
+      h3 It is free
+      .col-lg-10
+        form method='post' action='/login' id='form-login'
+          input.form-control type='text' name='username' id='input-username' placeholder="email"
+          br
+          input.form-control type='text' name='username' id='input-username' placeholder="Username"
+          br
+          input.form-control type='password' name='password' id='input-password' placeholder="password"
+          br
+          input.btn.btn-primary.block.full-width.m-b type='submit' id='button-login' value='Create Account'
 section#features.features
   .container
     .row
       .navy-line
       .col-lg-5.col-lg-offset-1.features-text
-        small INSPINIA
-        h2 Perfectly designed
-        i.fa.fa-bar-chart.big-icon.pull-right
-        p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.
+        h2 Secure
+        i.fa.fa-lock.big-icon.pull-right
+        p KEY-SHARER encrypts your credential information using the most advance encryption algorithms available. So even if our database is stolen people would not have acces to your personal information.
       .col-lg-5.features-text
-        small INSPINIA
-        h2 Perfectly designed
-        i.fa.fa-bolt.big-icon.pull-right
-        p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.
-    .row
-      .col-lg-5.col-lg-offset-1.features-text
-        small INSPINIA
-        h2 Perfectly designed
-        i.fa.fa-clock-o.big-icon.pull-right
-        p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.
-      .col-lg-5.features-text
-        small INSPINIA
-        h2 Perfectly designed
-        i.fa.fa-users.big-icon.pull-right
-        p INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.
+        h2 Easy
+        i.fa.fa-smile-o.big-icon.pull-right
+        p KEY-SHARER wants to empower people with secure tools to share credential. So we make sharing your credential to your kids and friends as simple as possible.
 section#team.gray-section.team
   .container
     .row.m-b-lg

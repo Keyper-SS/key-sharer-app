@@ -770,3 +770,8 @@ fieldset[disabled] .btn-primary.active {
 .pace-inactive {
   display: none;
 }
+
+.border{
+  border-radius: 0.5em;
+    box-shadow: gray 0 0 2px;
+}
