@@ -1,7 +1,7 @@
 require 'sinatra'
 
 # Basec class for ConfigShare Web Application
-class ShareConfigurationsApp < Sinatra::Base
+class KeySharerApp < Sinatra::Base
   use Rack::Session::Cookie, expire_after: 2_592_000 # One month in seconds
 
   set :views, File.expand_path('../../views', __FILE__)

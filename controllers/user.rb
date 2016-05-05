@@ -1,7 +1,7 @@
 require 'sinatra'
 
 # Base class for SharerKey Web Application
-class SharerKeyApp < Sinatra::Base
+class KeySharerApp < Sinatra::Base
   get '/login/?' do
     slim :login
   end
@@ -10,11 +10,11 @@ class SharerKeyApp < Sinatra::Base
     username = params[:username]
     password = params[:password]
 
-    @current_account = FindAuthenticatedAccount.call(
+    @current_user = FindAuthenticatedUser.call(
       username: username, password: password)
 
-    if @current_account
-      session[:current_account] = @current_account
+    if @current_user
+      session[:current_user] = @current_user
       slim :home
     else
       slim :login

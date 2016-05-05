@@ -2,10 +2,10 @@ require 'http'
 
 # Returns an authenticated user, or nil
 class FindAuthenticatedUser
-  HOST = 'http://configshare-api.herokuapp.com/api/v1'
+  HOST = 'http://localhost:3000/api/v1'
 
   def self.call(username:, password:)
-    response = HTTP.get("#{HOST}/accounts/#{username}/authenticate",
+    response = HTTP.get("#{HOST}/users/#{username}/authenticate",
                         params: {password: password})
     response.code == 200 ? JSON.parse(response) : nil
   end
