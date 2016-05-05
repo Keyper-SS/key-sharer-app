@@ -1,0 +1,28 @@
+.navbar-wrapper
+  nav.navbar.navbar-default.navbar-fixed-top.navbar-scroll role="navigation" 
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand href="#"  KEY SHARER
+      #navbar.navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a.page-scroll href="/"  Home
+          li
+            a.page-scroll href="/#features"  Features
+          li
+            a.page-scroll href="/#team"  Team
+          - if @current_user
+            li
+              a href="/users/#{@current_user['data']['attributes']['username']}" Account
+                #{@current_user['data']['attributes']['username']}
+            li
+              a href='/logout' logout
+          - else
+            li
+              a href="/login"
+                = 'login'
