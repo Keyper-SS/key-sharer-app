@@ -1,14 +1,16 @@
-a href='/'
-  == 'HOME'
-= ' | '
-- if @current_account
-  = "#{@current_account['username']} | "
-  a href="/account/#{@current_account['username']}" account
-  = ' | '
-  a href='/logout' logout
-- else
-  a href='/login'
-    = 'login'
-  = ' | '
-  a href='/register'
-    = 'register'
+nav
+  .nav-wrapper
+    a.brand-logo href="#"  Logo
+    ul#nav-mobile.right.hide-on-med-and-down
+      - if @current_user
+        li 
+          = "#{@current_user.username}"
+        li
+          a href="/users/#{@current_user['username']}" Account
+        li
+          a href='/logout' logout
+        = "#{@current_user.username}"
+      - else
+        li
+          a href="/login"
+            = 'login'
