@@ -11,19 +11,17 @@
       #navbar.navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-right
           li
-            a.page-scroll href="#page-top"  Home
+            a.page-scroll href="/"  Home
           li
-            a.page-scroll href="#features"  Features
+            a.page-scroll href="/#features"  Features
           li
-            a.page-scroll href="#team"  Team
+            a.page-scroll href="/#team"  Team
           - if @current_user
-            li 
-              = "#{@current_user.username}"
             li
-              a href="/users/#{@current_user['username']}" Account
+              a href="/users/#{@current_user['data']['attributes']['username']}" Account
+                #{@current_user['data']['attributes']['username']}
             li
               a href='/logout' logout
-                = "#{@current_user.username}"
           - else
             li
               a href="/login"

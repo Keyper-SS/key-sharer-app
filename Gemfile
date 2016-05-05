@@ -4,7 +4,7 @@ ruby '2.2.3'
 gem 'sinatra'
 gem 'thin'
 gem 'slim'
-
+gem 'sinatra-flash'
 gem 'http'
 
 group :development do

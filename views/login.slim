@@ -1,9 +1,20 @@
-p 
-  form method='post' action='/login' id='form-login'
-    label for='username' Username
-    input type='text' name='username' id='input-username'
-    br
-    label for='password' Password
-    input type='password' name='password' id='input-password'
-    br
-    input type='submit' id='button-login' value='login'
+section#page-top.container.home
+  br
+  br
+  br
+  br
+  .row.features-block.text-center
+    .col-lg-4.wow.fadeInRight.border
+      .team-member
+        img.img-responsive.img-circle alt="" src="img/avatarApp.png" /
+      form method='post' action='/login' id='form-login'
+        br
+        input.form-control type='text' name='username' id='input-username' placeholder="Username"
+        br
+        input.form-control type='password' name='password' id='input-password' placeholder="password"
+        br
+        input.btn.btn-primary.block.full-width.m-b type='submit' id='button-login' value='Login'
+      - if flash[:error]
+        section.row.alert.alert-danger
+          p
+            | #{flash[:error]}
