@@ -18,7 +18,7 @@ class KeySharerApp < Sinatra::Base
       puts @current_user
       slim :home
     else
-      flash[:error] = "Username or Password incorrect"
+      # flash[:error] = "Username or Password incorrect"
       slim :login
     end
   end
@@ -31,7 +31,7 @@ class KeySharerApp < Sinatra::Base
 
   get '/users/:username' do
     if @current_user && @current_user['data']['attributes']['username'] == params[:username]
-      slim(:users)
+      slim(:user)
     else
       slim(:login)
     end
