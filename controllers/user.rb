@@ -29,9 +29,9 @@ class KeySharerApp < Sinatra::Base
     slim :login
   end
 
-  get '/account/:username' do
-    if @current_account && @current_account['username'] == params[:username]
-      slim(:account)
+  get '/users/:username' do
+    if @current_user && @current_user['data']['attributes']['username'] == params[:username]
+      slim(:users)
     else
       slim(:login)
     end
