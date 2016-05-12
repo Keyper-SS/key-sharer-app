@@ -1,5 +1,4 @@
 require 'base64'
-require 'rbnacl/libsodium'
 require 'jose'
 
 # Utility class to encrypt and decrypt messages from this application
@@ -8,13 +7,11 @@ require 'jose'
 class SecureMessage
   def self.encrypt(message)
     str = message.to_json
-    puts ENV['MSG_KEY']
     jwk = JOSE::JWK.from_oct(Base64.strict_decode64(ENV['MSG_KEY']))
     jwk.block_encrypt(str, { 'alg' => 'dir', 'enc' => 'A256GCM' }).compact.to_s
   end
 
   def self.decrypt(secret_message)
-    puts ENV['MSG_KEY']
     jwk = JOSE::JWK.from_oct(Base64.strict_decode64(ENV['MSG_KEY']))
     plain = jwk.block_decrypt(secret_message).first
     JSON.load(plain)
