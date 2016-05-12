@@ -1,11 +1,11 @@
 require 'sinatra'
 
 class KeySharerApp < Sinatra::Base
-  get '/register' do
+  get '/register/?' do
     slim :home
   end
 
-  post '/register' do
+  post '/register/?' do
     begin
       puts params[:username]
       puts params[:email]
@@ -34,9 +34,9 @@ class KeySharerApp < Sinatra::Base
     new_user = SecureMessage.decrypt(params[:token_secure])
 
     result = CreateVerifiedUser.call(
-      username: new_user[:username],
-      email: new_user[:email],
-      password: params[:password])
+      username: new_user['username'],
+      email: new_user['email'],
+      password: params['password'])
 
     puts "RESULT: #{result}"
     result ? redirect('/login') : redirect('/register')
