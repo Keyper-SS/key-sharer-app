@@ -1,0 +1,6 @@
+- if flash[:error]
+  section.row.alert.alert-danger
+    p
+      | #{flash[:error]}
+/ - if flash[:notice]
+/     #{flash[:notice]}

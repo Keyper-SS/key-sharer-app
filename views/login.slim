@@ -14,7 +14,4 @@ section#page-top.container.home
         input.form-control type='password' name='password' id='input-password' placeholder="password"
         br
         input.btn.btn-primary.block.full-width.m-b type='submit' id='button-login' value='Login'
-      / - if flash[:error]
-      /   section.row.alert.alert-danger
-      /     p
-      /       | #{flash[:error]}
+      == slim :flash_bar
