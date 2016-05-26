@@ -57,7 +57,11 @@ class KeySharerApp < Sinatra::Base
         email: new_user['email'],
         password: validation[:password])
 
-      flash[:notice] = 'Registration Completed. Please Login'
+      if result
+        flash[:notice] = 'Registration Completed. Please Login'
+      else
+        flash[:error] = 'Registration error. Please try again'
+      end
       redirect '/login'
     rescue => e
       puts "FAIL REGISTRATION: #{e}"
