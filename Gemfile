@@ -8,10 +8,10 @@ gem 'slim'
 gem 'http'
 gem 'rbnacl-libsodium'
 gem 'jose'
-
+gem 'dry-validation'
 gem 'pony'
-
-gem 'sinatra-flash'
+gem 'rack-flash3'
+gem 'rack-ssl-enforcer'
 
 group :development do
   gem 'rerun'
