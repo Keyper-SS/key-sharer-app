@@ -17,7 +17,7 @@ class KeySharerApp < Sinatra::Base
     user = FindAuthenticatedUser.call(login)
 
     if user
-      @current_user = user['user']
+      @current_user = user['data']['user']
       session[:auth_token] = user['auth_token']
       session[:current_user] = SecureMessage.encrypt(@current_user)
       redirect '/'
@@ -35,7 +35,8 @@ class KeySharerApp < Sinatra::Base
   end
 
   get '/users/:username' do
-    if @current_user && @current_user['data']['attributes']['username'] == params[:username]
+    if @current_user && @current_user['attributes']['username'] == params[:username]
+      @auth_token = session[:auth_token]
       slim(:user)
     else
       slim(:login)

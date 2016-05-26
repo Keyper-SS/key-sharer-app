@@ -18,8 +18,8 @@
             a.page-scroll href="/#team"  Team
           - if @current_user
             li
-              a href="/users/#{@current_user['data']['attributes']['username']}" Account
-                #{@current_user['data']['attributes']['username']}
+              a href="/users/#{@current_user['attributes']['username']}" Account
+                #{@current_user['attributes']['username']}
             li
               a href='/logout' logout
           - else
