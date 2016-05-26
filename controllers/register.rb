@@ -40,18 +40,29 @@ class KeySharerApp < Sinatra::Base
   end
 
   post '/register/:token_secure/verify' do
-    redirect "/register/#{params[:token_secure]}/verify" unless
-      (params[:password] == params[:password_confirm]) &&
-      !params[:password].empty?
 
-    new_user = SecureMessage.decrypt(params[:token_secure])
+    validation = Passwords.call(params)
 
-    result = CreateVerifiedUser.call(
-      username: new_user['username'],
-      email: new_user['email'],
-      password: params['password'])
+    if validation.failure?
+      flash[:error] = "Uppps.. #{validation.messages.values.join('; ')}"
+      redirect "/register/#{params[:token_secure]}/verify"
+      halt
+    end
 
-    puts "RESULT: #{result}"
-    result ? redirect('/login') : redirect('/register')
+    begin
+      new_user = SecureMessage.decrypt(params[:token_secure])
+
+      result = CreateVerifiedUser.call(
+        username: new_user['username'],
+        email: new_user['email'],
+        password: validation[:password])
+
+      flash[:notice] = 'Registration Completed. Please Login'
+      redirect '/login'
+    rescue => e
+      puts "FAIL REGISTRATION: #{e}"
+      redirect '/'
+    end
+
   end
 end
