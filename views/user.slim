@@ -1,6 +1,68 @@
-h1 User Account
-table
-  tr
-    td Username:
-    td
-      == @current_user['attributes']['username']
+br
+br
+br
+br
+section.container
+	.wrapper.wrapper-content.animated.fadeInRight
+	  .row
+	    .col-lg-4
+	      .ibox
+	        .ibox-content
+	          h3 My Secrets
+	          p.small
+	            i.fa.fa-hand-o-up
+	            | List of secrets created by me
+	          .input-group
+	            span.input-group-btn
+	              a.button.btn.btn-sm.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/new" type="button" 
+	                i.fa.fa-plus
+	                | Add Secret
+	          ul.sortable-list.connectList.agile-list
+	          	- @owned.each do |secret|
+	              li.warning-element
+	                p Title: #{secret[:title]}
+	                p Description: #{secret[:description]}
+	                p Account: #{secret[:account]}
+	                p Pass: #{secret[:password]}
+	                .agile-detail
+	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
+	                  a.pull-right.btn.btn-xs.btn-white href="#"  Share
+	                  i.fa.fa-clock-o
+	                  | 
+	            
+	    .col-lg-4
+	      .ibox
+	        .ibox-content
+	          h3 Shared
+	          p.small
+	            i.fa.fa-hand-o-up
+	            | List of Secrets that i shared
+	          ul.sortable-list.connectList.agile-list
+	            - @shared.each do |secret|
+	              li.success-element
+	                p Title: #{secret[:title]}
+	                p Description: #{secret[:description]}
+	                p Account: #{secret[:account]}
+	                p Pass: #{secret[:password]}
+	                .agile-detail
+	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
+	                  i.fa.fa-clock-o
+	                  | 
+	    .col-lg-4
+	      .ibox
+	        .ibox-content
+	          h3 Received
+	          p.small
+	            i.fa.fa-hand-o-up
+	            | List of Secred shared to me
+	          ul.sortable-list.connectList.agile-list
+	            - @received.each do |secret|
+	              li.info-element
+	                p Title: #{secret[:title]}
+	                p Description: #{secret[:description]}
+	                p Account: #{secret[:account]}
+	                p Pass: #{secret[:password]}
+	                .agile-detail
+	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
+	                  i.fa.fa-clock-o
+	                  | 
