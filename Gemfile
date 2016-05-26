@@ -8,7 +8,7 @@ gem 'slim'
 gem 'http'
 gem 'rbnacl-libsodium'
 gem 'jose'
-
+gem 'dry-validation'
 gem 'pony'
 
 gem 'sinatra-flash'
