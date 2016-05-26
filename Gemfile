@@ -10,8 +10,7 @@ gem 'rbnacl-libsodium'
 gem 'jose'
 gem 'dry-validation'
 gem 'pony'
-
-gem 'sinatra-flash'
+gem 'rack-flash3'
 
 group :development do
   gem 'rerun'

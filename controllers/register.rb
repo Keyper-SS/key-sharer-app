@@ -8,9 +8,6 @@ class KeySharerApp < Sinatra::Base
 
   post '/register/?' do
     begin
-      puts params[:username]
-      puts params[:email]
-
       registration = Registration.call(params)
 
       if registration.failure?
@@ -21,6 +18,7 @@ class KeySharerApp < Sinatra::Base
 
       begin
         EmailRegistrationVerification.call(registration)
+        flash[:notice] = 'Please Check your email to confirm registration' 
         redirect '/'
       rescue => e
         logger.error "FAIL EMAIL: #{e}"
