@@ -7,12 +7,20 @@ class KeySharerApp < Sinatra::Base
   end
 
   post '/users/:username/secrets/new' do
+    secret = SecretRegistration.call(params)
+
+    if secret.failure?
+      flash[:error] = 'Some input is required. Please try again'
+      redirect "/users/params[:username]/secrets/new"
+      halt
+    end
+
     result = CreateOwnedSecret.call(
         current_user: @current_user, 
-        title: params['title'],
-        description: params['description'], 
-        account: params['account'], 
-        password: params['password'])
+        title: secret[:title],
+        description: secret[:description], 
+        account: secret[:account], 
+        password: secret[:password])
 
     if result
       flash[:notice] = 'Secret Added'
