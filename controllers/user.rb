@@ -37,6 +37,22 @@ class KeySharerApp < Sinatra::Base
   get '/users/:username' do
     if @current_user && @current_user['attributes']['username'] == params[:username]
       @auth_token = session[:auth_token]
+      @owned = GetOwnedSecrets.call(current_user: @current_user,
+                                      auth_token: @auth_token)
+      @shared = GetSharedSecrets.call(current_user: @current_user,
+                                      auth_token: @auth_token)
+      @received = GetReceivedSecrets.call(current_user: @current_user,
+                                      auth_token: @auth_token)
+
+      puts 'Owned'
+      puts @owned
+      puts @owned.size
+      puts 'shared'
+      puts @shared
+      puts @shared.size
+      puts 'received'
+      puts @received
+      puts @received.size
       slim(:user)
     else
       slim(:login)
