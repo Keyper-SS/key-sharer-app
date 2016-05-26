@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'rack-flash'
+require 'rack/ssl-enforcer'
 
 # Base class for ConfigShare Web Application
 class KeySharerApp < Sinatra::Base
