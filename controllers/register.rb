@@ -1,5 +1,6 @@
 require 'sinatra'
 
+# This class controlls registration of user in app
 class KeySharerApp < Sinatra::Base
   get '/register/?' do
     slim :home
@@ -9,10 +10,24 @@ class KeySharerApp < Sinatra::Base
     begin
       puts params[:username]
       puts params[:email]
-      EmailRegistrationVerification.call(
-        username: params[:username],
-        email: params[:email])
-      redirect '/'
+
+      registration = Registration.call(params)
+
+      if registration.failure?
+        flash[:error] = 'Please enter a valid username and email'
+        redirect 'register'
+        halt
+      end
+
+      begin
+        EmailRegistrationVerification.call(registration)
+        redirect '/'
+      rescue => e
+        logger.error "FAIL EMAIL: #{e}"
+        flash[:error] = 'Unable to send email verification -- please '\
+                        'check you have entered the right address'
+        redirect '/register'
+      end
     rescue => e
       puts "FAIL EMAIL: #{e}"
       redirect '/register'
