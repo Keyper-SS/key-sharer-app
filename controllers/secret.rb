@@ -32,12 +32,14 @@ class KeySharerApp < Sinatra::Base
   end
 
   get '/users/:username/secrets/:secret_id/share' do
+    @secret_id = params["secret_id"]
     slim :share_secret
   end
 
   post '/users/:username/secrets/:secret_id/share' do
     if @current_user && @current_user['attributes']['username'] == params[:username]
       @auth_token = session[:auth_token]
+      puts params
       sharingForm = SecretSharing.call(params)
 
       if sharingForm.failure?
@@ -57,7 +59,7 @@ class KeySharerApp < Sinatra::Base
       else
         flash[:error] = 'Secret Error. Please try again'
       end
-      redirect '/users/params[:username]'
+      redirect "/users/#{params[:username]}"
     else
       slim(:login)
     end

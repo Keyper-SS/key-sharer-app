@@ -12,7 +12,7 @@ class GetReceivedSecrets
 
   def self.extract_secrets(secrets)
     secrets['data'].map do |secret|
-      { id: secret['id'],
+      { id: secret['secret_id'],
         title: secret['data']['title'],
         description: secret['data']['description'],
         account: secret['data']['account_encrypted'],
