@@ -38,8 +38,7 @@ class KeySharerApp < Sinatra::Base
 
   post '/users/:username/secrets/:secret_id/share' do
     if @current_user && @current_user['attributes']['username'] == params[:username]
-      @auth_token = session[:auth_token]
-      puts params
+  
       sharingForm = SecretSharing.call(params)
 
       if sharingForm.failure?
@@ -47,6 +46,13 @@ class KeySharerApp < Sinatra::Base
         redirect "/users/params[:username]/secrets/new"
         halt
       end
+
+
+      puts 'info to call'
+      puts @current_user
+      puts sharingForm[:secret_id]
+      puts sharingForm[:receiver_username]
+      puts @auth_token
 
       result = ShareSecret.call(
           current_user: @current_user, 

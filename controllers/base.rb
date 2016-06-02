@@ -20,7 +20,9 @@ class KeySharerApp < Sinatra::Base
   before do
     if session[:current_user]
       @current_user = SecureMessage.decrypt(session[:current_user])
+      @auth_token = session[:auth_token]
       puts @current_user
+      puts session[:auth_token]
     end
   end
 
