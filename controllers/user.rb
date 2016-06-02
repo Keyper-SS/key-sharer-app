@@ -18,7 +18,7 @@ class KeySharerApp < Sinatra::Base
 
     if user
       @current_user = user['data']['user']
-      session[:auth_token] = user['auth_token']
+      session[:auth_token] = user['data']['auth_token']
       session[:current_user] = SecureMessage.encrypt(@current_user)
       redirect '/'
     else
