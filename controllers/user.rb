@@ -20,7 +20,7 @@ class KeySharerApp < Sinatra::Base
       @current_user = user['data']['user']
       session[:auth_token] = user['data']['auth_token']
       session[:current_user] = SecureMessage.encrypt(@current_user)
-      redirect '/'
+      redirect "/users/#{login[:username]}"
     else
       flash[:error] = 'Your username or password did not match our records'
       slim :login
