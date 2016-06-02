@@ -12,8 +12,12 @@ html
     link href="/css/style.css" rel="stylesheet" 
     link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet"
   body
-    == slim :nav
-    == yield
+    .container
+      .row
+        == slim :nav
+      .row.m-t-5
+        == slim :flash_bar
+        == yield
     script src="/js/jquery-2.1.1.js"
     script src="/js/pace.min.js"
     script src="/js/bootstrap.min.js"
