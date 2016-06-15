@@ -15,8 +15,8 @@ class GetReceivedSecrets
       { id: secret['secret_id'],
         title: secret['data']['title'],
         description: secret['data']['description'],
-        account: secret['data']['account_encrypted'],
-        password: secret['data']['password_encrypted'] }
+        account: secret['data']['account'],
+        password: secret['data']['password'] }
     end
   end
 end
