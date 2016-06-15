@@ -30,6 +30,7 @@ class KeySharerApp < Sinatra::Base
 
   get '/logout/?' do
     @current_user = nil
+    @gh_url = "#{ENV['GH_SSO_URL']}?client_id=#{ENV['GH_CLIENT_ID']}&scope=#{ENV['GH_SCOPE']}"
     session.clear
     flash[:notice] = 'You have logged out - please login again to use this site'
     slim :login
@@ -58,5 +59,10 @@ class KeySharerApp < Sinatra::Base
     else
       slim(:login)
     end
+  end
+
+  get '/callback' do
+    puts 'Github callback'
+    puts params
   end
 end

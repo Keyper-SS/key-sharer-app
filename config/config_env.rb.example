@@ -16,4 +16,8 @@ config_env do
   set 'SENDGRID_DOMAIN', '...'
   set 'SENDGRID_USERNAME', '...'
   set 'SENDGRID_PASSWORD', '...'
+  set 'GH_SSO_URL', ''
+  set 'GH_SCOPE', ''
+  set 'GH_CLIENT_ID', ''
+  set 'GH_CLIENT_SECRET', ''
 end
