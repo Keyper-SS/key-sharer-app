@@ -65,6 +65,8 @@ class KeySharerApp < Sinatra::Base
     puts 'Github callback'
     begin
       sso_account = RetrieveGithubAccount.call(params['code'])
+      puts 'Account from API'
+      puts sso_account
       #login_account(sso_account)
       #redirect "/accounts/#{@current_account['username']}/projects"
     rescue => e
