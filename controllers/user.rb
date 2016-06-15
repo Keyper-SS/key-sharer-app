@@ -3,6 +3,7 @@ require 'sinatra'
 # Base class for SharerKey Web Application
 class KeySharerApp < Sinatra::Base
   get '/login/?' do
+    @gh_url = "#{ENV['GH_SSO_URL']}?client_id=#{ENV['GH_CLIENT_ID']}&scope=#{ENV['GH_SCOPE']}"
     slim :login
   end
 
