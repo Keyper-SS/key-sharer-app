@@ -77,7 +77,6 @@ class KeySharerApp < Sinatra::Base
         halt
       end
 
-      puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
 
       if RemoveOwnedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], auth_token: @auth_token )
         flash[:notice] = 'Secret Removed'
@@ -102,8 +101,6 @@ class KeySharerApp < Sinatra::Base
         redirect "/users/#{params[:username]}"
         halt
       end
-
-      puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
 
       if RemoveSharedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], receiver_id: parameters[:receiver_id], auth_token: @auth_token )
         flash[:notice] = 'Secret Removed'
