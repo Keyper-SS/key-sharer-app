@@ -12,3 +12,8 @@ SecretSharing = Dry::Validation.Form do
 	key(:secret_id).required
 	key(:receiver_email).required
 end
+
+SecretRemove = Dry::Validation.Form do
+	key(:username).required
+	key(:secret_id).required
+end

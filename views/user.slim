@@ -25,7 +25,7 @@ section.container
 	                p Account: #{secret[:account]}
 	                p Pass: #{secret[:password]}
 	                .agile-detail
-	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
+	                  a.pull-right.btn.btn-xs.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/removeOwned"  Remove
 	                  a.pull-right.btn.btn-xs.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/share"  Share
 	                  i.fa.fa-clock-o
 	                  | 
