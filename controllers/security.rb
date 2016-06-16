@@ -11,11 +11,11 @@ class KeySharerApp < Sinatra::Base
   use Rack::Flash
   configure :production do
     use Rack::SslEnforcer
+    use SecureHeaders::Middleware
   end
 
   # Against CSRF (requires `disable :protection` before `use Rack::Session::...`)
   use Rack::Protection, reaction: :drop_session
-  use SecureHeaders::Middleware
 
   SecureHeaders::Configuration.default do |config|
     config.cookies = {
@@ -35,7 +35,7 @@ class KeySharerApp < Sinatra::Base
     config.csp = {
       report_only: false,
       preserve_schemes: true,
-      default_src: %w('self'),
+      default_src: %w(http: 'self'),
       child_src: %w('self'),
       connect_src: %w(wws:),
       img_src: %w('self'),
