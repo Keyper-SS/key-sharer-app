@@ -35,7 +35,7 @@ class KeySharerApp < Sinatra::Base
     config.csp = {
       report_only: false,
       preserve_schemes: true,
-      default_src: %w(http: 'self'),
+      default_src: %w('self'),
       child_src: %w('self'),
       connect_src: %w(wws:),
       img_src: %w('self'),
