@@ -100,4 +100,30 @@ class KeySharerApp < Sinatra::Base
     
   end
 
+  post '/users/:username/secrets/:secret_id/:receiver_id/removeShared' do
+    # Remove Secret
+    if @current_user && @current_user['attributes']['username'] == params[:username]
+      parameters = SecretSharedRemove.call(params)
+      if parameters.failure?
+        flash[:error] = 'Some input is required. Please try again'
+        redirect "/users/#{params[:username]}"
+        halt
+      end
+
+      puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
+
+      if RemoveSharedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], receiver_id: parameters[:receiver_id], auth_token: @auth_token )
+        flash[:info] = 'Secret Removed'
+        redirect "/users/#{parameters[:username]}"
+      else
+        flash[:erro] = 'Could not remove Secret'
+        redirect "/users/#{parameters[:username]}"
+      end
+    else
+      flash[:error] = 'You are not authorized to do this'
+      redirect('/')
+    end
+    
+  end
+
 end

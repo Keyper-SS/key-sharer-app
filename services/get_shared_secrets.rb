@@ -18,6 +18,7 @@ class GetSharedSecrets
         description: secret['data']['description'],
         account: secret['data']['account'],
         password: secret['data']['password'],
+        receiver_id: secret['receiver_id'],
         receiver_username: secret['receiver_username'],
         receiver_email: secret['receiver_email']}
     end
