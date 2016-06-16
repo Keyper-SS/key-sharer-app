@@ -5,7 +5,6 @@ class GetOwnedSecrets
   def self.call(current_user:, auth_token:)
     response = HTTP.auth("Bearer #{auth_token}")
                    .get("#{ENV['API_HOST']}/users/#{current_user['id']}/owned_secrets")
-    puts 'Response from server'
     response.code == 200 ? extract_secrets(response.parse) : []
   end
 

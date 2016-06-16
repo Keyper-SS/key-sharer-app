@@ -11,7 +11,6 @@ class GetSharedSecrets
   private
 
   def self.extract_secrets(secrets)
-    puts secrets
     secrets['data'].map do |secret|
       { id: secret['secret_id'],
         title: secret['data']['title'],
