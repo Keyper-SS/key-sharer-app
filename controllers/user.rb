@@ -69,7 +69,7 @@ class KeySharerApp < Sinatra::Base
       puts sso_account
       if sso_account
         login_account(sso_account)
-        redirect "/accounts/#{@current_user['username']}"
+        redirect "/users/#{@current_user['attributes']['username']}"
       else
         'Error getting github account'
       end
