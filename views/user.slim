@@ -25,7 +25,8 @@ section.container
 	                p Account: #{secret[:account]}
 	                p Pass: #{secret[:password]}
 	                .agile-detail
-	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
+	                  form id="ownedRemove#{secret[:id]}" action="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/removeOwned" method="delete" 
+                      input.pull-right.btn.btn-xs.btn-white type="submit"  Remove
 	                  a.pull-right.btn.btn-xs.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/share"  Share
 	                  i.fa.fa-clock-o
 	                  | 
@@ -40,6 +41,8 @@ section.container
 	          ul.sortable-list.connectList.agile-list
 	            - @shared.each do |secret|
 	              li.success-element
+	              	p Receiver: #{secret[:receiver_username]}
+	              	p Email: #{secret[:receiver_email]}
 	                p Title: #{secret[:title]}
 	                p Description: #{secret[:description]}
 	                p Account: #{secret[:account]}
@@ -63,6 +66,5 @@ section.container
 	                p Account: #{secret[:account]}
 	                p Pass: #{secret[:password]}
 	                .agile-detail
-	                  a.pull-right.btn.btn-xs.btn-white href="#"  Remove
 	                  i.fa.fa-clock-o
 	                  | 
