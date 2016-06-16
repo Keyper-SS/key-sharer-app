@@ -3,7 +3,7 @@ require 'slim'
 require 'rack/ssl-enforcer'
 require 'secure_headers'
 
-# Security settings for ConfigShare
+# Security settings for KeysharerApp
 class KeySharerApp < Sinatra::Base
   disable :protection  # required for Rack::Protection middleware below
   use Rack::Session::Cookie, secret: ENV['MSG_KEY'],
