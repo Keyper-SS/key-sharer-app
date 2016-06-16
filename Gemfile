@@ -12,6 +12,7 @@ gem 'dry-validation'
 gem 'pony'
 gem 'rack-flash3'
 gem 'rack-ssl-enforcer'
+gem 'secure_headers'
 
 group :development do
   gem 'rerun'
