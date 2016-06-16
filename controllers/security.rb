@@ -12,12 +12,9 @@ class KeySharerApp < Sinatra::Base
   configure :production do
     use Rack::SslEnforcer
     use SecureHeaders::Middleware
-  end
-
-  # Against CSRF (requires `disable :protection` before `use Rack::Session::...`)
-  use Rack::Protection, reaction: :drop_session
-
-  SecureHeaders::Configuration.default do |config|
+    # Against CSRF (requires `disable :protection` before `use Rack::Session::...`)
+    use Rack::Protection, reaction: :drop_session
+    SecureHeaders::Configuration.default do |config|
     config.cookies = {
       secure: true,
       httponly: true,
@@ -50,6 +47,9 @@ class KeySharerApp < Sinatra::Base
       report_uri: %w(/report_csp_violation)
     }
   end
+  end  
+
+  
 
   post '/report_csp_violation' do
     logger.info("CSP VIOLATION: #{request.body.read}")

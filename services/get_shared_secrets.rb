@@ -11,12 +11,15 @@ class GetSharedSecrets
   private
 
   def self.extract_secrets(secrets)
+    puts secrets
     secrets['data'].map do |secret|
       { id: secret['secret_id'],
         title: secret['data']['title'],
         description: secret['data']['description'],
         account: secret['data']['account'],
-        password: secret['data']['password'] }
+        password: secret['data']['password'],
+        receiver_username: secret['receiver_username'],
+        receiver_emai: secret['receiver_email']}
     end
   end
 end
