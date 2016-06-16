@@ -46,15 +46,6 @@ class KeySharerApp < Sinatra::Base
       @received = GetReceivedSecrets.call(current_user: @current_user,
                                       auth_token: @auth_token)
 
-      puts 'Owned'
-      puts @owned
-      puts @owned.size
-      puts 'shared'
-      puts @shared
-      puts @shared.size
-      puts 'received'
-      puts @received
-      puts @received.size
       slim(:user)
     else
       slim(:login)

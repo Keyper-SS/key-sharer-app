@@ -16,7 +16,6 @@ class KeySharerApp < Sinatra::Base
       halt
     end
 
-    puts 'controll'
     result = CreateOwnedSecret.call(
         current_user: @current_user, 
         title: secret[:title],
@@ -50,12 +49,6 @@ class KeySharerApp < Sinatra::Base
       end
 
 
-      puts 'info to call'
-      puts @current_user
-      puts sharingForm[:secret_id]
-      puts sharingForm[:receiver_email]
-      puts @auth_token
-
       result = ShareSecret.call(
           current_user: @current_user, 
           secret_id: sharingForm[:secret_id],
@@ -87,10 +80,10 @@ class KeySharerApp < Sinatra::Base
       puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
 
       if RemoveOwnedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], auth_token: @auth_token )
-        flash[:info] = 'Secret Removed'
+        flash[:notice] = 'Secret Removed'
         redirect "/users/#{parameters[:username]}"
       else
-        flash[:erro] = 'Could not remove Secret'
+        flash[:error] = 'Could not remove Secret'
         redirect "/users/#{parameters[:username]}"
       end
     else
@@ -113,10 +106,10 @@ class KeySharerApp < Sinatra::Base
       puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
 
       if RemoveSharedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], receiver_id: parameters[:receiver_id], auth_token: @auth_token )
-        flash[:info] = 'Secret Removed'
+        flash[:notice] = 'Secret Removed'
         redirect "/users/#{parameters[:username]}"
       else
-        flash[:erro] = 'Could not remove Secret'
+        flash[:error] = 'Could not remove Secret'
         redirect "/users/#{parameters[:username]}"
       end
     else
