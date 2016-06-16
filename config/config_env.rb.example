@@ -1,3 +1,4 @@
+# Please fill the values and rename file as config_env.rb
 config_env :development do
   set 'APP_SECRET_KEY', ''
   set 'MSG_KEY', ''
