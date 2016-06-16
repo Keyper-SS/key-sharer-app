@@ -25,11 +25,11 @@ section.container
 	                p Account: #{secret[:account]}
 	                p Pass: #{secret[:password]}
 	                .agile-detail
-	                  form id="ownedRemove#{secret[:id]}" action="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/removeOwned" method="delete" 
-                      input.pull-right.btn.btn-xs.btn-white type="submit"  Remove
-	                  a.pull-right.btn.btn-xs.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/share"  Share
-	                  i.fa.fa-clock-o
-	                  | 
+                    form id="ownedRemove#{secret[:id]}" action="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/removeOwned" method="post" 
+                      button.pull-right.btn.btn-xs.btn-white type="submit" Remove
+                    a.pull-right.btn.btn-xs.btn-white href="/users/#{@current_user['attributes']['username']}/secrets/#{secret[:id]}/share"  Share
+                    i.fa.fa-clock-o
+                    | 
 	            
 	    .col-lg-4
 	      .ibox

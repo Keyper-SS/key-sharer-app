@@ -86,7 +86,7 @@ class KeySharerApp < Sinatra::Base
 
       puts "Trying to remove secret #{params[:secret_id]} from #{params[:username]}"
 
-      if RemoveOwnedSecret.call(username: parameters[:username],secret_id: parameters[:secret_id])
+      if RemoveOwnedSecret.call(current_user: @current_user,secret_id: parameters[:secret_id], auth_token: @auth_token )
         flash[:info] = 'Secret Removed'
         redirect "/users/#{parameters[:username]}"
       else
