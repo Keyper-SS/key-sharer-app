@@ -26,6 +26,13 @@ class KeySharerApp < Sinatra::Base
     end
   end
 
+  def login_account(authorized_account)
+    @current_user = authorized_account['account']
+    session[:auth_token] = authorized_account['auth_token']
+    session[:current_user] = SecureMessage.encrypt(@current_account)
+    flash[:notice] = "Welcome back #{@current_user['username']}"
+  end
+
   get '/' do
     slim :home
   end

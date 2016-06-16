@@ -65,8 +65,14 @@ class KeySharerApp < Sinatra::Base
     puts 'Github callback'
     begin
       sso_account = RetrieveGithubAccount.call(params['code'])
-      #login_account(sso_account)
-      #redirect "/accounts/#{@current_account['username']}/projects"
+      puts 'Account from API'
+      puts sso_account
+      if sso_account
+        login_account(sso_account)
+        redirect "/accounts/#{@current_user['username']}"
+      else
+        'Error getting github account'
+      end
     rescue => e
       flash[:error] = 'Could not sign in using Github'
       puts "RESCUE: #{e}"
