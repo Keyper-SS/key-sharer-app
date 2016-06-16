@@ -5,6 +5,6 @@ class RetrieveGithubAccount
   def self.call(code)
     response = HTTP.headers(accept: 'application/json')
                    .get("#{ENV['API_HOST']}/github_account?code=#{code}")
-    response.code == 200 ? response.parse : nil
+    response.code == 200 ? SON.parse({ :data => JSON.parse(response) }.to_json) : nil
   end
 end

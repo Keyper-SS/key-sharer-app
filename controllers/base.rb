@@ -27,8 +27,8 @@ class KeySharerApp < Sinatra::Base
   end
 
   def login_account(authorized_account)
-    @current_user = authorized_account['account']
-    session[:auth_token] = authorized_account['auth_token']
+    @current_user = authorized_account['data']['user']
+    session[:auth_token] = authorized_account['data']['auth_token']
     session[:current_user] = SecureMessage.encrypt(@current_account)
     flash[:notice] = "Welcome back #{@current_user['username']}"
   end
