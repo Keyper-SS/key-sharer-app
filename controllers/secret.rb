@@ -16,12 +16,14 @@ class KeySharerApp < Sinatra::Base
       halt
     end
 
+    puts 'controll'
     result = CreateOwnedSecret.call(
         current_user: @current_user, 
         title: secret[:title],
         description: secret[:description], 
         account: secret[:account], 
-        password: secret[:password])
+        password: secret[:password],
+        auth_token: @auth_token)
 
     if result
       flash[:notice] = 'Secret Added'

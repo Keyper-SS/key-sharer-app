@@ -19,7 +19,7 @@ class GetSharedSecrets
         account: secret['data']['account'],
         password: secret['data']['password'],
         receiver_username: secret['receiver_username'],
-        receiver_emai: secret['receiver_email']}
+        receiver_email: secret['receiver_email']}
     end
   end
 end
