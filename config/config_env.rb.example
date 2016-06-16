@@ -1,23 +1,26 @@
-config_env :development, :test do
-  set 'MSG_KEY', '...'
-
-  set 'API_HOST', 'http://configshare-api.herokuapp.com/api/v1'
-  set 'APP_HOST', 'http://localhost:9292'
+# Please fill the values and rename file as config_env.rb
+config_env :development do
+  set 'APP_SECRET_KEY', ''
+  set 'MSG_KEY', ''
+  set 'API_HOST', ''
+  set 'APP_HOST', ''
+  set 'GH_CLIENT_ID', ''
+  set 'GH_CLIENT_SECRET', ''
 end
 
 config_env :production do
-  set 'MSG_KEY', '...'
-
-  set 'API_HOST', 'http://configshare-api.herokuapp.com/api/v1'
-  set 'APP_HOST', 'http://configshare.herokuapp.com'
+  set 'APP_SECRET_KEY', ''
+  set 'MSG_KEY', ''
+  set 'API_HOST', ''
+  set 'APP_HOST', ''
+  set 'GH_CLIENT_ID', ''
+  set 'GH_CLIENT_SECRET', ''
 end
 
 config_env do
-  set 'SENDGRID_DOMAIN', '...'
-  set 'SENDGRID_USERNAME', '...'
-  set 'SENDGRID_PASSWORD', '...'
+  set 'SENDGRID_DOMAIN', ''
+  set 'SENDGRID_USERNAME', ''
+  set 'SENDGRID_PASSWORD', ''
   set 'GH_SSO_URL', ''
   set 'GH_SCOPE', ''
-  set 'GH_CLIENT_ID', ''
-  set 'GH_CLIENT_SECRET', ''
 end
