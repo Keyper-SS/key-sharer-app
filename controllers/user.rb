@@ -72,6 +72,7 @@ class KeySharerApp < Sinatra::Base
         redirect "/users/#{@current_user['attributes']['username']}"
       else
         'Error getting github account'
+        halt
       end
     rescue => e
       flash[:error] = 'Could not sign in using Github'
