@@ -18,3 +18,9 @@ SecretRemove = Dry::Validation.Form do
 	key(:username).required
 	key(:secret_id).required
 end
+
+SecretSharedRemove = Dry::Validation.Form do
+	key(:username).required
+	key(:secret_id).required
+	key(:receiver_id).required
+end
